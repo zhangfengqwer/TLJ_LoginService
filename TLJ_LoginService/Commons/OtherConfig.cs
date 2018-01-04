@@ -1,0 +1,68 @@
+﻿using Newtonsoft.Json.Linq;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+
+public class OtherConfig
+{
+    // 日志路径
+    public static string s_logPath;
+
+    // apk版本号
+    public static string s_apkVersion;
+
+    // 代码版本
+    public static string s_codeVersion;
+
+    // 资源版本
+    public static string s_resVersion;
+
+    // 是否开放充值
+    public static bool s_canRecharge;
+
+    // 是否可以调试
+    public static bool s_canDebug;
+
+    public static bool init()
+    {
+        try
+        {
+            // 读取文件
+            {
+                StreamReader sr = new StreamReader(AppDomain.CurrentDomain.BaseDirectory + "OtherConfig.json");
+                string str = sr.ReadToEnd().ToString();
+                sr.Close();
+
+                JObject jo = JObject.Parse(str);
+
+                // 日志路径
+                s_logPath = jo.GetValue("LogPath").ToString();
+
+                // apk版本号
+                s_apkVersion = jo.GetValue("ApkVersion").ToString();
+
+                // 代码版本
+                s_codeVersion = jo.GetValue("CodeVersion").ToString();
+
+                // 资源版本
+                s_resVersion = jo.GetValue("ResVersion").ToString();
+
+                // 是否开放充值
+                s_canRecharge = (bool)jo.GetValue("canRecharge");
+
+                // 是否可以调试
+                s_canDebug = (bool)jo.GetValue("canDebug");
+            }
+
+            return true;
+        }
+        catch(Exception ex)
+        {
+            LogUtil.getInstance().writeLogToLocalNow("读取OtherConfig文件出错：" + ex.Message);
+
+            return false;
+        }
+    }
+}

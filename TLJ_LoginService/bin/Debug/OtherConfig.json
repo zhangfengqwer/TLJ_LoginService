@@ -1,0 +1,8 @@
+{
+  "LogPath": "E:/log/",
+  "canRecharge": true,
+  "canDebug": true,
+  "ApkVersion": "1.0.20",
+  "CodeVersion": "1.0.0",
+  "ResVersion": "1.0.0"
+}
