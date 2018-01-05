@@ -14,24 +14,25 @@ class NetRespond_QuickRegister
         try
         {
             JObject jo = JObject.Parse(reqData);
-            string tag = jo.GetValue("tag").ToString();
-            respondJO.Add("tag", tag);
-
-            string account = jo.GetValue("account").ToString();
-            string password = jo.GetValue("password").ToString();
+            jo.Add("connId", connId.ToInt32());
+//            string tag = jo.GetValue("tag").ToString();
+//            respondJO.Add("tag", tag);
+//
+//            string account = jo.GetValue("account").ToString();
+//            string password = jo.GetValue("password").ToString();
 
             // 传给数据库服务器
             {
-                JObject temp = new JObject();
-                temp.Add("tag", "QuickRegister");
-                temp.Add("connId", connId.ToInt32());
-
-                temp.Add("account", account);
-                temp.Add("password", password);
+//                JObject temp = new JObject();
+//                temp.Add("tag", "QuickRegister");
+//                temp.Add("connId", connId.ToInt32());
+//
+//                temp.Add("account", account);
+//                temp.Add("password", password);
 
                 //for (int k = 0; k < 1000; k++)
                 {
-                    if (!LoginService.m_mySqlServerUtil.sendMseeage(temp.ToString()))
+                    if (!LoginService.m_mySqlServerUtil.sendMseeage(jo.ToString()))
                     {
                         // 连接不上数据库服务器，通知客户端
                         {
