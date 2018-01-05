@@ -110,7 +110,7 @@ public class HPServerUtil
         byte[] flag = BitConverter.GetBytes(m_packFlag);
         byte[] sendBytes = CombineBytes(flag, CombineBytes(len, bytes));
 
-        LogUtil.getInstance().addDebugLog($"发送数据长度：{sendBytes.Length},body:{bytes.Length},flag:{flag.Length},data:{data}");
+        //LogUtil.getInstance().addDebugLog($"发送数据长度：{sendBytes.Length},body:{bytes.Length},flag:{flag.Length},data:{data}");
 
         if (m_tcpServer.Send(connId, sendBytes, sendBytes.Length))
         {
