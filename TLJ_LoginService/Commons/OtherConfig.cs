@@ -25,6 +25,12 @@ public class OtherConfig
     // 是否可以调试
     public static bool s_canDebug;
 
+    // 服务器是否在维护
+    public static bool s_isStopServer;
+
+    // 版号
+    public static string s_banhao;
+
     public static bool init()
     {
         try
@@ -54,6 +60,12 @@ public class OtherConfig
 
                 // 是否可以调试
                 s_canDebug = (bool)jo.GetValue("canDebug");
+
+                // 服务器是否在维护
+                s_isStopServer = (bool)jo.GetValue("isStopServer");
+
+                // 版号
+                s_banhao = jo.GetValue("banhao").ToString();
             }
 
             return true;

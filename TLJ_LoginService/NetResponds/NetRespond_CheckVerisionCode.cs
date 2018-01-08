@@ -23,6 +23,8 @@ class NetRespond_CheckVerisionCode
             respondJO.Add("apkVersion", OtherConfig.s_apkVersion);
             respondJO.Add("canRecharge", OtherConfig.s_canRecharge);
             respondJO.Add("canDebug", OtherConfig.s_canDebug);
+            respondJO.Add("isStopServer", OtherConfig.s_isStopServer);
+            respondJO.Add("banhao", OtherConfig.s_banhao);
 
             // 发送给客户端
             LoginService.m_serverUtil.sendMessage(connId, respondJO.ToString());
