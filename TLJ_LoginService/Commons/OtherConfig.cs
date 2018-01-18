@@ -14,10 +14,10 @@ public class OtherConfig
     public static string s_apkVersion;
 
     // 代码版本
-    public static string s_codeVersion;
+    public static int s_codeVersion;
 
     // 资源版本
-    public static string s_resVersion;
+    public static int s_resVersion;
 
     // 是否开放充值
     public static bool s_canRecharge;
@@ -50,10 +50,10 @@ public class OtherConfig
                 s_apkVersion = jo.GetValue("ApkVersion").ToString();
 
                 // 代码版本
-                s_codeVersion = jo.GetValue("CodeVersion").ToString();
+                s_codeVersion = (int)jo.GetValue("CodeVersion");
 
                 // 资源版本
-                s_resVersion = jo.GetValue("ResVersion").ToString();
+                s_resVersion = (int)jo.GetValue("ResVersion");
 
                 // 是否开放充值
                 s_canRecharge = (bool)jo.GetValue("canRecharge");

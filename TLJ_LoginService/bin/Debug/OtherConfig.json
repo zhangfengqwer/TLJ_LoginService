@@ -5,6 +5,6 @@
   "canDebug": false,
   "isStopServer": false,
   "ApkVersion": "1.0.20",
-  "CodeVersion": "1.0.0",
-  "ResVersion": "1.0.0"
+  "CodeVersion": 1,
+  "ResVersion": 1
 }
