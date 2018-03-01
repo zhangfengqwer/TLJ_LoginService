@@ -14,23 +14,22 @@ class NetRespond_ThirdLogin
         try
         {
             JObject jo = JObject.Parse(reqData);
-            //string tag = jo.GetValue("tag").ToString();
             jo.Add("connId", connId.ToInt32());
 
-
-           // respondJO.Add("tag", tag);
+            // 获取客户端ip和端口
+            string ip = string.Empty;
+            ushort port = 0;
+            if (LoginService.m_serverUtil.m_tcpServer.GetRemoteAddress(connId, ref ip, ref port))
+            {
+                jo.Add("ip", ip.ToString());
+            }
+            else
+            {
+                jo.Add("ip", "");
+            }
 
             // 传给数据库服务器
             {
-                /**
-                JObject temp = new JObject();
-                temp.Add("tag", tag);
-                temp.Add("connId", connId.ToInt32());
-
-                temp.Add("platform", jo.GetValue("platform"));
-                temp.Add("third_id", jo.GetValue("third_id"));
-                temp.Add("nickname", jo.GetValue("nickname"));
-                */
                 if (!LoginService.m_mySqlServerUtil.sendMseeage(jo.ToString()))
                 {
                     // 连接不上数据库服务器，通知客户端

@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 public class HPServerUtil
 {
     //TcpPackServer m_tcpServer = new TcpPackServer();
-    TcpServer m_tcpServer = new TcpServer();
+    public TcpServer m_tcpServer = new TcpServer();
 
     // 数据包尾部标识
     char m_packFlag = (char)1;
@@ -293,7 +293,7 @@ public class HPServerUtil
             // 请求登录接口
             if (tag.CompareTo(TLJCommon.Consts.Tag_Login) == 0)
             {
-                NetRespond_Login.doAskCilentReq_Login(receiveObj.m_connId,text);
+                NetRespond_Login.doAskCilentReq_Login(receiveObj.m_connId, text);
             }
             // 请求第三方登录
             else if (tag.CompareTo(TLJCommon.Consts.Tag_Third_Login) == 0)
@@ -314,6 +314,15 @@ public class HPServerUtil
             else if (tag.CompareTo(TLJCommon.Consts.Tag_CheckVerisionCode) == 0)
             {
                 NetRespond_CheckVerisionCode.doAskCilentReq_CheckVerisionCode(receiveObj.m_connId, text);
+            }
+            // 检查版本
+            else if (tag.CompareTo(TLJCommon.Consts.Tag_LoginDataStatistics) == 0)
+            {
+                NetRespond_LoginDataStatistics.doAskCilentReq_LoginDataStatistics(receiveObj.m_connId, text);
+            }
+            else
+            {
+                LogUtil.getInstance().addDebugLog("未知Tag：" + tag);
             }
         }
         else

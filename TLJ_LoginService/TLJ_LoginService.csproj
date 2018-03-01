@@ -61,6 +61,7 @@
     <Compile Include="NetResponds\NetRespond_Login.cs" />
     <Compile Include="NetResponds\NetRespond_OnlineInfo.cs" />
     <Compile Include="NetResponds\NetRespond_QuickRegister.cs" />
+    <Compile Include="NetResponds\NetRespond_LoginDataStatistics.cs" />
     <Compile Include="NetResponds\NetRespond_ThirdLogin.cs" />
     <Compile Include="ProjectInstaller.cs">
       <SubType>Component</SubType>
